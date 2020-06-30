@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="vue.js"></script>
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <!-- 引入组件库 -->
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+
+    <style>
+        .selected_ul
+        {
+            list-style-type: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        拿到某一行的index----------scope.$index
+        拿到某一行的数据-----------scope.row
+    -->
+    <div id="app">
+        <el-table :data="tableData" border height="300" style="width: 100%;"  >
+            <el-table-column label="昵称" align="center" >
+                <!-- 自定义模板 -->
+                <template slot-scope="scope">
+                    <el-input v-model="scope.row.username" placeholder="昵称">
+                        <el-button type="primary" slot="append" round size="mini" icon="el-icon-circle-plus" v-on:click="openDialog(scope.$index)">选择队友</el-button>
+                    </el-input>
+                </template>
+            </el-table-column>
+            <el-table-column label="队友姓名" align="center">
+                <template slot-scope="scope">              
+                        <ul class="selected_ul"  >
+                            <li v-for="option in scope.row.info">{{option.name}}</li>
+                        </ul>
+                </template> 
+
+            </el-table-column>
+            <el-table-column fixed="right"
+                             label="操作"
+                             width="100"
+                             align="center">
+                <template slot-scope="scope">
+                    <el-button v-on:click.native.prevent="deleteRow(scope.$index, tableData)"
+                               type="danger"
+                               size="small"
+                               icon="el-icon-delete"
+                               >
+                        移除
+                    </el-button>
+                </template>
+            </el-table-column>
+        </el-table>                         
+        <el-button type="primary" icon="el-icon-circle-plus-outline" v-on:click="addData" style="float: right;">添加数据</el-button>    
+
+        <el-dialog title="选择队友"  :visible.sync="dialogVisible"  :close-on-click-modal="false" top="5%" >
+            <el-button type="primary" size="small" class="waves-effect mb5" style="float:right" v-on:click="addToTable()">
+                完成
+            </el-button>
+            <el-table
+            ref="multipleTable"
+            :data="tableData2"
+            tooltip-effect="dark"
+            style="width: 100%"
+            @selection-change="handleSelectionChange">
+                <el-table-column
+                type="selection"
+                width="55">
+                </el-table-column>
+                <el-table-column
+                prop="Id"
+                label="Id"
+                width="120">
+                </el-table-column>
+                <el-table-column
+                prop="sex"
+                label="性别"
+                width="120">
+                </el-table-column>
+                <el-table-column
+                prop="name"
+                label="姓名"
+                width="120">
+                </el-table-column>
+
+     
+
+          </el-table>
+        </el-dialog>
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                currentRowIndex: 0,
+                dialogVisible: false,
+                username:'',
+                tableData: [
+                 
+                ],
+                tableData2:[
+                    {
+                        Id:0,
+                        name:'张三',
+                        sex:'男',
+
+
+                    },
+                    {
+                        Id:1,
+                        name:'李四',
+                        sex:'男',
+
+                    },                   
+                    {
+                        Id:2,
+                        name:'王五',
+                        sex:'男',
+     
+                    },
+                ] , 
+                multipleSelection :[],
+            },
+            methods: {
+                addData() {
+                    this.tableData.push({
+                        edit: true,
+                    });
+                },
+                deleteRow(index, rows) {
+                    rows.splice(index, 1);
+                },
+                openDialog(index)
+                {
+                    this.dialogVisible = true;
+                    this.currentRowIndex = index;
+                },
+                handleSelectionChange(val)
+                {
+                    
+                    this.multipleSelection  = val;
+                    console.log(this.multipleSelection );
+                },
+                addToTable()
+                {
+                    this.tableData[this.currentRowIndex].info = this.multipleSelection;
+                    console.log(this.tableData)
+                    this.$set(this.tableData)//强制更新
+                    this.dialogVisible = false;
+                }
+            }
+        })
+    </script>
+</body>
+</html>
