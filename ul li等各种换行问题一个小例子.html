@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .container
+    {
+        width: 1216px;
+        height: 449px;
+        margin: 0 auto;
+    }
+    .title {
+    
+        font-weight: bold;
+        line-height: 20px;
+        height: 40px;
+        border-bottom: 2px solid #303133;
+        margin-bottom: 5px;
+    }
+    .wrapper-1 {
+        float: left;
+        width: 250px;
+    }
+
+    .listStyle {
+        list-style-type: none;
+        float: left;
+        padding: 0;
+        margin: 0;
+    }
+
+    .listStyle li {
+        margin-bottom: 3px;
+        word-break: break-all;
+    }
+
+    .listStyle li:last-child {
+        margin-bottom: 0px;
+    }
+
+
+    .listStyle2 {
+        list-style-type: none;
+       
+        padding: 0;
+        margin: 0;
+    }
+
+    .listStyle2 li {
+        margin-bottom: 8px;
+        
+    }
+
+    .listStyle2 li:last-child {
+        margin-bottom: 0px;
+    }
+
+
+
+    .listStyle3 {
+        list-style-type: none;
+        padding-left: 5px;
+        padding: 0;
+        margin: 0;
+    }
+
+    .listStyle3 li {
+        margin-bottom: 8px;
+  
+    }
+
+    .listStyle3 li:last-child {
+        margin-bottom: 0px;
+    }
+
+
+
+    .isBold {
+        font-weight: bold
+    }
+    .label
+    {
+        display: inline-block;
+        font-weight: bold;
+        width: 130px;
+        text-align: right;
+        margin-right: 10px;
+        vertical-align: top;
+    }
+
+    .underline {
+        border-bottom: 1px solid #dbdbdb;
+        text-align: center
+    }
+    .wrapper-2 {
+        float: left;
+        width: 360px;
+        margin-left: 50px;
+    }
+
+    .wrapper-3 {
+        float: left;
+        width: 230px;
+        margin-left: 60px;
+    }
+
+    .wrapper-4 {
+        float: right;
+        width: 230px;
+    }
+    .table_header th
+    {
+     
+        text-align: left;
+    
+    }
+    .print
+    {
+        text-align: left;
+        width: 43px;  
+        height: 28px;
+        background-color: #242424;  
+        border-color: #242424;  
+        color: #fff;  
+        border-radius: 3px; /* future proofing */  
+        vertical-align: middle;  
+        border: 1px solid transparent;  
+        font-weight: 900;  
+    
+    }
+    table{
+        border-collapse:collapse;border:none;
+    }
+
+    table td{
+        height: 40px;
+        padding: 10px;
+        border-bottom:solid #dbdbdb 1px;
+        border-top:solid #dbdbdb 1px;
+    }
+    .text
+    {
+        display: inline-block;
+        word-break: break-all;
+        width: 210px;
+      
+       
+    }
+</style>
+<body>
+    <div class="container">
+        <h1 class="title">Order Summary Report</h1>
+        <!-- 中部内容 -->
+        <div style="overflow: hidden;margin-bottom: 10px;">
+            <div class="wrapper-1">
+                <ul class="listStyle">
+                    <li>Hang yang</li>
+                    <li>ALBERTSON OLDSMOBILE CHEVROLET</li>                 
+                    <li>4114 SEPULVEDA BLVD</li>
+                    <li>CULVER CITY, CA90230-4700 US</li>
+                </ul>
+            </div>
+            <!-- 各种换行问题 -->
+            <div class="wrapper-2">    
+                    <ul class="listStyle2">
+                        <li><span class="label">Date Paid:</span>6/8/2020</li>
+                        <li><span class="label">Amount Paid:</span>$595.34</li>
+                        <li><span class="label">Record #:</span> <span class="text">AO20200608163306473222222222222222222222222</span>  </li>
+                        <li><span class="label">Store:</span></li>
+                    </ul>
+            </div>
+
+            <div class="wrapper-3">
+                <div class="underline">
+                    <span class="isBold">Buyer Comments</span>
+                </div>
+                <div class="write1"></div>
+            </div>
+
+            <div class="wrapper-4">
+                <div class="underline">
+                    <span class="isBold">Internal Notes</span>
+                </div>
+                <div class="write2"></div>
+            </div>
+        </div>
+        <!-- 表格 -->
+        <table align="center">
+            <tr class="table_header">
+              <th style="width: 150px;">Item ID</th>
+              <th>Title</th>
+              <th style="width: 150px;">Unit Price</th>
+              <th style="width: 150px;">Qty</th>
+              <th style="width: 150px;">Ext Price</th>
+            </tr>
+           
+            <tr>
+              <td style="width: 150px">GG5301S</td>
+              <td>Royal Gourmet GG5301S Propane Gas Grill 5-Burner with Side Burner, Black</td>
+              <td style="width: 150px;">$252.89</td>
+              <td style="width: 100px;">1</td>
+              <td style="width: 150px;">$252.89</td>
+            </tr>
+            
+          </table>
+          <div style="text-align:left;margin-bottom:20px;margin-top:20px">
+            <button  type="button" class="print">打印</button>
+        </div>
+    </div>
+
+
+</body>
+<script>
+
+</script>
+</html>
